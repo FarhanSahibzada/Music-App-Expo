@@ -4,13 +4,13 @@
     "slug": "Music-App",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/iconn.png",
     "userInterfaceStyle": "dark",
     "scheme": "Music-App",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/splashhscreen.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#000000"
     },
     "ios": {
       "supportsTablet": true,
@@ -23,8 +23,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/splashhscreen.png",
+        "backgroundColor": "#000000"
       },
       "package": "music.app"
     },
@@ -32,7 +32,7 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router" 
     ],
     "experiments": {
       "typedRoutes": true,
@@ -40,7 +40,7 @@
     },
     "extra": {
       "router": {
-        "origin": false
+        "origin": false  
       },
       "eas": {
         "projectId": "3a32a7ec-c659-44d3-b7a2-a5b47ddb56e5"

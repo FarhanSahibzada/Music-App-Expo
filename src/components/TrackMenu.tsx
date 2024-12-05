@@ -18,6 +18,7 @@ export const TrackMenu = ({ track, children }: trackmenuprops) => {
     const fabouritesong = useSelector((state: RootState) => state.favouritetrack)
     const activequeueid = useSelector((state: RootState) => state.activeQueueid)
 
+    
     const handletoggle = (id: string) => {
         match(id)
             .with('add-to-favorites', async () => {
@@ -39,7 +40,10 @@ export const TrackMenu = ({ track, children }: trackmenuprops) => {
                 }
             })
             .with('add-to-playlist', () => {
-                router.push({ pathname:'/(Modals)/AddToPlayList', params : {trackurl : track.url} })
+                router.push({ pathname: '/(Modals)/AddToPlayList', params: { trackurl: track.url } })
+            })
+            .with('remove-from-playlist' , ()=> {
+                router.push({pathname : '/(Modals)/RemoveToPlaylist' , params : {trackurl : track.url}})
             })
             .otherwise(() => console.warn(`Unknown menu action ${id}`))
     }
@@ -51,21 +55,34 @@ export const TrackMenu = ({ track, children }: trackmenuprops) => {
                 {
                     id: isFavorite ? 'remove-from-favorites' : 'add-to-favorites',
                     title: isFavorite ? 'Remove from favorites' : 'Add to favorites',
+                    titleColor : "#F96E2A",
                     image: Platform.select({
                         ios: isFavorite ? 'star.fill' : 'star',
-                        android: isFavorite ? 'ic_menu_today' : 'ic_menu_today',
+                        android: isFavorite ? 'ic_menu_delete' : 'ic_menu_add',
                     }),
-                    imageColor: '#252525',
+                    imageColor: '#F96E2A',
                 },
                 {
                     id: 'add-to-playlist',
                     title: 'Add to playlist',
+                    titleColor : '#F96E2A',
                     image: Platform.select({
                         ios: 'plus',
                         android: 'ic_menu_add',
                     }),
-                    imageColor: '#252525',
+                    imageColor: '#F96E2A',
                 },
+                {
+                    id: 'remove-from-playlist',
+                    title: 'Remove from playlist',
+                    titleColor : "#F96E2A",
+                    image: Platform.select({
+                        ios: 'trash',
+                        android: 'ic_menu_delete',
+                    }),
+                    imageColor: '#F96E2A',
+                },
+
             ]}
         >
             {children}

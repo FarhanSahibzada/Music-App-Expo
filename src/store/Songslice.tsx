@@ -68,7 +68,7 @@ const SongSlice = createSlice({
                 })
 
                 return acc
-            }, [] as Playlist[])            
+            }, [] as Playlist[])
         },
         toggleFavouriteSong: (state, action) => {
             state.tracks = state.tracks.map((track) => {
@@ -81,15 +81,25 @@ const SongSlice = createSlice({
                     return track
                 }
             });
-            state.favouritetrack = state.tracks.filter((track)=> track.rating === 1)
+            state.favouritetrack = state.tracks.filter((track) => track.rating === 1)
         },
-        AddtoplayList : (state , action)=> {
-            state.tracks = state.tracks.map((currenttrack)=> {
-                if(currenttrack.url == action.payload.url){
-                    console.log('agya')
+        AddtoplayList: (state, action) => {
+            state.tracks = state.tracks.map((currenttrack) => {
+                if (currenttrack.url == action.payload.url) {
                     return {
-                        ...currenttrack ,
-                        playlist : [...(currenttrack.playlist ?? []), action.payload.playlist]
+                        ...currenttrack,
+                        playlist: [...(currenttrack.playlist ?? []), action.payload.playlist]
+                    }
+                }
+                return currenttrack
+            })
+        },
+        Removetoplaylist: (state, action) => {
+            state.tracks = state.tracks.map((currenttrack) => {
+                if (currenttrack.url == action.payload.url) {
+                    return {
+                        ...currenttrack,
+                        playlist: currenttrack.playlist.filter((playlisttt : string) => playlisttt !== action.payload.playlistname)
                     }
                 }
                 return currenttrack
@@ -99,7 +109,7 @@ const SongSlice = createSlice({
 })
 
 
-export const { Getfullsong, Favouritesong, SetActiveQueueid, SetAritistName, SetPLaylistSong , toggleFavouriteSong , AddtoplayList } = SongSlice.actions
+export const { Getfullsong, Favouritesong, SetActiveQueueid, SetAritistName, SetPLaylistSong, toggleFavouriteSong, AddtoplayList  , Removetoplaylist} = SongSlice.actions
 
 
 export default SongSlice.reducer

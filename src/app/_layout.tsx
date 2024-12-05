@@ -31,6 +31,18 @@ const RootNavigation = () => {
 					},
 				}}
 			/>
+       <Stack.Screen name="(Modals)/RemoveToPlaylist"
+				options={{
+					presentation: 'modal',
+					headerStyle: {
+						backgroundColor: colors.background,
+					},
+					headerTitle: 'Remove from Playlist',
+					headerTitleStyle: {
+						color: colors.text,
+					},
+				}}
+			/>
       </Stack>
       </PersistGate>
     </Provider>
